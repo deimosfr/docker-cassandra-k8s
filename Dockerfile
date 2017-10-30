@@ -59,7 +59,7 @@ RUN \
     && wget -q -O - "http://search.maven.org/remotecontent?filepath=org/jolokia/jolokia-jvm/${JOLOKIA_VERSION}/jolokia-jvm-${JOLOKIA_VERSION}-agent.jar" > /usr/local/share/jolokia-agent.jar \
     && echo "$JOLOKIA_SHA  /usr/local/share/jolokia-agent.jar" | sha256sum -c - \
     && mirror_url=$( wget -q -O - http://www.apache.org/dyn/closer.cgi/cassandra \
-        | sed -n 's#.*href="\(http://ftp.[^"]*\)".*#\1#p' \
+        | sed -n 's#.*href="\(ftp.[^"]*\)".*#\1#p' \
         | head -n 1 \
       ) \
     && wget -q -O - ${mirror_url}/${CASSANDRA_VERSION}/apache-cassandra-${CASSANDRA_VERSION}-bin.tar.gz \
